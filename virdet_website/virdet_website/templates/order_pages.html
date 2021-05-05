@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+
+{% block content %}
+
+
+<section class="page-section">
+    <div class="container content-container">
+                <div id="start" class="content-page" {% if request.path != '' and request.path != '/' %}  style="display:none" {% endif %}>
+                    {% include "portal/pages/start.html" %}
+                </div>
+                <div id="access" class="content-page" {% if not '/access' in request.path %}  style="display:none" {% endif %}>
+                    {% include "portal/pages/access.html" %}
+                </div>
+                <div id="register" class="content-page" {% if not '/register' in request.path %} style="display:none" {% endif %} >
+                    {% include "portal/pages/register.html" %}
+                </div>
+                <div id="adultsConsent" class="content-page"  {% if not '/consent-adults' in request.path %} style="display:none" {% endif %} >
+                    {% include "portal/pages/consent_adults.html" %}
+                </div>
+                <div id="parentsConsent" class="content-page" {% if not '/consent-parents' in request.path %} style="display:none" {% endif %}>
+                    {% include "portal/pages/consent_parents.html" %}
+                </div>
+                <div id="children12Consent" class="content-page" {% if not '/consent-children-12' in request.path %} style="display:none" {% endif %}>
+                    {% include "portal/pages/consent_children12.html" %}
+                </div>
+                <div id="children7Consent" class="content-page" {% if not '/consent-children-7' in request.path %} style="display:none" {% endif %}>
+                    {% include "portal/pages/consent_children7.html" %}
+                </div>
+                <div id="sending" class="content-page" style="display:none">
+                    {% include "portal/pages/sending.html" %}
+                </div>
+                <div id="confirmError" class="content-page" {% if not '/confirm-error' in request.path %} style="display:none" {% endif %}>
+                    {% include "portal/pages/confirm_error.html" %}
+                </div>
+                <div id="confirmed" class="content-page"  {% if not '/confirmed' in request.path %} style="display:none" {% endif %}>
+                    {% include "portal/pages/confirmed.html" %}
+                </div>
+    </div>
+</section>
+{% endblock %}
+
+
+
+
+{% block topjs %}
+{% endblock %}
+
+{% block bottomjs %}
+<script type="text/javascript" src="{{ STATIC_URL }}/static/js/jsencrypt.min.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}/static/js/aes-js.js"></script>
+<script src="{{ STATIC_URL }}/static/js/jquery-3.6.0.min.js"></script>
+<script src="{{ STATIC_URL }}/static/js/bootstrap.bundle.min.js"></script>
+
+
+{% include "portal/js/main.js.html" %}
+{% include "portal/js/start.js.html" %}
+{% include "portal/js/access.js.html" %}
+{% include "portal/js/register.js.html" %}
+{% include "portal/js/consent.js.html" %}
+{% include "portal/js/consent_adults.js.html" %}
+{% include "portal/js/consent_parents.js.html" %}
+{% include "portal/js/consent_children12.js.html" %}
+{% include "portal/js/consent_children7.js.html" %}
+{% include "portal/js/send.js.html" %}
+{% include "portal/js/navbar.js.html" %}
+
+<script type="text/javascript" src="{{ STATIC_URL }}/static/js/configurable-date-input-polyfill.dist.js"></script>
+{% endblock %}

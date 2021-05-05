@@ -1,11 +1,6 @@
-{% extends 'base.html' %}
-{% load i18n %}
-
-{% block body %}
     <h2>Bitte geben Sie Ihren Code ein:</h2>
     <form action="token" method="POST">
         {% csrf_token %}
         <input type="textfield" name="token">
         <input type="submit">
     </form>
-{% endblock %}
