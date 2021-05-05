@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block body %}
+    <h2>Testkit-Bestellung</h2>
+
+    <form>
+        {% csrf_token %}
+        <table>
+            <tr>
+                <th>Name</th>
+                <th>Alter</th>
+                <th>Telefonnummer</th>
+            </tr>
+            {% for f in range %}
+            <tr>
+                <td><input type="text" name="name_{{i}}"></td>
+                <td>{% include "snippets/age_choice.html" with name="agegroup_{{i}}" %}</td>
+                <td><input type="text" name="phone_{{i}}"></td>
+            </tr>
+            {% endfor %}
+        </table>
+        <p><button type="submit" value="add_row" formnovalidate>Zeile hinzufügen</button></p>
+        <p><button type="submit" value="order">Bestellen</button></p>
+    </form>
+{% endblock %}
